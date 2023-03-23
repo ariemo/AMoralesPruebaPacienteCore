@@ -1,0 +1,73 @@
+﻿@model ML.Paciente
+@{
+    ViewBag.Title = "GetAll";
+    Layout  = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+     <div class="row">
+       <div class="text-center">
+        <h2>Paciente</h2> 
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+               <h5>Seleccione un Paciente para editar o presione Agregar para registrar uno nuevo""</h5>
+               <hr />
+               </div>
+               </div>
+               </div>
+
+<div class="row">
+    <div style="float:rigth">
+        @Html.ActionLink("Agregar", "Form", "Paciente", htmlAttributes: new { @class = "btn btn-success"})
+        </div>
+               </div>
+                <hr />
+<div class="row">
+    @if (Model.Pacientes != null)
+    {
+        <table class="table table-bordered table-responsive">
+            <thead>
+                <tr>
+                    v
+                    <td class="hidden">IdPaciente</td>
+                    <td class="text-center" style="font-weigth:bold;">Nombre</td>
+                    <td class="text-center" style="font-weigth:bold;">Apellido Paterno</td>
+                    <td class="text-center" style="font-weigth:bold;">Apellido Materno</td>
+                    <td class="text-center" style="font-weigth:bold;">Fecha de Nacimiento</td>
+                    <td class="text-center" style="font-weigth:bold;">Sexo</td>
+                    <td class="text-center" style="font-weigth:bold;">Fecha de Ingreso</td>
+                    <td class="text-center" style="font-weigth:bold;">Diagnostico</td>
+                    <td class="text-center" style="font-weigth:bold;">Tipo de Sangre</td>
+
+                    <td class="text-center" style="font-weigth:bold;">Eliminar</td>
+                     </tr>
+                      </thead>
+            @foreach (ML.Paciente paciente in Model.Pacientes)
+            {
+                <tr>
+                      <td class="hidden">@paciente.IdPaciente</td>
+                      <td>@paciente.Nombre</td>
+                      <td>@paciente.ApellidoPaterno</td>
+                      <td>@paciente.ApellidoMaterno</td>
+                      <td>@paciente.FechaNacimiento</td>
+                      <td>@paciente.Sexo</td>
+                      <td>@paciente.FechaIngreso</td>
+                      <td>@paciente.Diagnostico</td>
+                      <td>@paciente.TipoSangre.Nombre</td>
+
+                 </tr>
+
+              }
+          </table>   
+       
+        
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">Ocurrio un error al realizar la consulta</div>
+    }
+    </div>
+   
+
